@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/pre-dexed/debug/classes-529299418682ecf8c6be52e555367e5dad1adbab.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/exploded-aar/BaseApplication/corelibrary/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5262b6d8e522336cd04a15653ab2d9005a0b5e8d">
+        <dex dex="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/pre-dexed/debug/classes-03b8af783949e4af60d96fd08a1915f59aa76beb.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/pre-dexed/debug/classes-0f16fa1e6723ee7d6b324451110da55349cda35d.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/exploded-aar/Android-Base-Project/corelibrary/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b37de05f4c4beb82bac52afd826af2419a0da17b">
+        <dex dex="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/pre-dexed/debug/classes-ffcf3405362fb8f34c7aaea7a3a4d354ffddbf83.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/exploded-aar/com.mcxiaoke.volley/library-aar/1.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e40b9a81989bd4a846018551c280f8c4d837bf2e">
+        <dex dex="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/pre-dexed/debug/classes-3cb2ecd02e9e2c0ba5672bdc4f71d9f9f60f6334.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-e2a19dcf1a9d0c339cd9cbd85ab8c63266e98ce8.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-ce7d752f7b9bd00b51f9d6a49967bfd05def701e.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/exploded-aar/com.mcxiaoke.volley/library-aar/1.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e40b9a81989bd4a846018551c280f8c4d837bf2e">
+        <dex dex="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/pre-dexed/debug/classes-8e759cc64b388492f96b760dc237c200b4fb8c62.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-83ca3ae71ff90a0a47bb2cc2dd7a7b80a79bbe4c.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/nikitakramarovsky/Android-Base-Project/app/build/intermediates/pre-dexed/debug/classes-293791d883322286f1b1b37903a3b6936e8d7600.jar" />
+    </item>
+    <item
+        jar="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/nikitakramarovsky/BaseApplication/app/build/intermediates/pre-dexed/debug/classes-dcac153548b339bb6cc1d1f92a26b4ce425bf79d.jar" />
+    </item>
+
+</items>

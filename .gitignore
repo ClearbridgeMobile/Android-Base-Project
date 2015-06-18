@@ -1,0 +1,8 @@
+.DS_Store
+.gradle
+.idea
+Android-Base-Project.iml
+BaseApplication.iml
+corelibrary/core.iml
+corelibrary/corelibrary.iml
+app/app.iml
