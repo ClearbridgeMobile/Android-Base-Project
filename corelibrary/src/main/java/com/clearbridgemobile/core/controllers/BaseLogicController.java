@@ -8,15 +8,13 @@ import java.util.Hashtable;
 
 public class BaseLogicController {
 
-    public BaseLogicController()
-    {
+    public BaseLogicController() {
     }
 
-    public void makeApiCall()
-    {
-        String url = "https://raizen.herokuapp.com/api/config";
+    public void makeApiCall() {
+        String apiServerURL = "";
         Hashtable<String, Object> params = new Hashtable<>();
-        CoreLib.getInstance().getNetworkManager().makeRequest(url, null, params, new NetworkCallback() {
+        CoreLib.getInstance().getNetworkManager().makeRequest(apiServerURL, null, params, new NetworkCallback() {
             @Override
             public void onGotData(String data) {
 

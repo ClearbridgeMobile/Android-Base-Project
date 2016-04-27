@@ -1,6 +1,6 @@
 package com.clearbridgemobile.core.enums;
 
-public enum InterfaceId{
+public enum InterfaceId {
     NETWORK,
     STORAGE,
     GPS,

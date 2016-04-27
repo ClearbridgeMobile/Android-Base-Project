@@ -11,8 +11,8 @@ import com.clearbridgemobile.core.models.ShareModel;
 public class ShareImplementation implements ShareInterface {
 
     private Activity activity;
-    public ShareImplementation(Activity activity)
-    {
+
+    public ShareImplementation(Activity activity) {
         this.activity = activity;
     }
 
@@ -23,11 +23,10 @@ public class ShareImplementation implements ShareInterface {
 
     @Override
     public void openMapWithLocation(GpsModel gpsModel) {
-        if(gpsModel == null)
-        {
+        if (gpsModel == null) {
             return;
         }
-        String geoLocation = "geo:"+ gpsModel.getLatitude() + "," + gpsModel.getLongitude();
+        String geoLocation = "geo:" + gpsModel.getLatitude() + "," + gpsModel.getLongitude();
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(geoLocation));
         if (intent.resolveActivity(activity.getPackageManager()) != null) {
@@ -53,11 +52,10 @@ public class ShareImplementation implements ShareInterface {
         }
     }
 
-    private void share(ShareModel shareModel)
-    {
+    private void share(ShareModel shareModel) {
         Intent share = new Intent(Intent.ACTION_SEND);
         share.setType("text/plain");
-        share.putExtra( android.content.Intent.EXTRA_TEXT, shareModel.getMsg()  + "\r\n" + shareModel.getImagePath());
+        share.putExtra(android.content.Intent.EXTRA_TEXT, shareModel.getMsg() + "\r\n" + shareModel.getImagePath());
 
         activity.startActivity(Intent.createChooser(share, ""));
 

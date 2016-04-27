@@ -13,37 +13,33 @@ public class CoreLib {
 
     private static CoreLib instance;
 
-    private CoreLib()
-    {
+    private CoreLib() {
         networkManager = new NetworkManager();
         interfaceManager = new InterfaceManager();
         gson = new Gson();
     }
 
-    public static CoreLib getInstance()
-    {
-        if(instance == null)
-        {
+    public static CoreLib getInstance() {
+        if (instance == null) {
             instance = new CoreLib();
         }
         return instance;
     }
 
     @ObjectiveCName(value = "initLib:(EnvironmentTypeEnum *)env")
-    public void initLib(EnvironmentType env)
-    {
+    public void initLib(EnvironmentType env) {
         networkManager.setEnvironmentType(env);
     }
 
-    public NetworkManager getNetworkManager()
-    {
+    public NetworkManager getNetworkManager() {
         return networkManager;
     }
 
-    public InterfaceManager getInterfaceManager()
-    {
+    public InterfaceManager getInterfaceManager() {
         return interfaceManager;
     }
 
-    public Gson getGson(){ return gson; }
+    public Gson getGson() {
+        return gson;
+    }
 }

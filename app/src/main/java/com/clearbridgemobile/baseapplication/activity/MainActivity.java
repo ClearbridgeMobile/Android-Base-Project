@@ -36,53 +36,47 @@ public class MainActivity extends Activity {
         init();
     }
 
-    private void init () {
+    private void init() {
         //Initialize the app:
-        if (coreLib == null)
-        {
-            //Get a reference to Raizen Lib:
+        if (coreLib == null) {
+            //Get a reference to Lib:
             coreLib = CoreLib.getInstance();
         }
 
-        if (networkManager == null)
-        {
+        if (networkManager == null) {
             //Get a reference to the Network Manager:
             networkManager = coreLib.getNetworkManager();
         }
 
-        if (interfaceManager == null)
-        {
+        if (interfaceManager == null) {
             //Get a reference to the Interface Manager:
             interfaceManager = coreLib.getInterfaceManager();
         }
 
-        if (networkImplementation == null)
-        {
+        if (networkImplementation == null) {
             //Create a new NetworkImplementation:
-            networkImplementation = new NetworkImplementation (getApplicationContext());
+            networkImplementation = new NetworkImplementation(getApplicationContext());
 
             networkImplementation.setNetworkManager(networkManager);
             interfaceManager.registerInterface(InterfaceId.NETWORK, networkImplementation);
         }
 
-        if(navigationImplementation == null){
-            navigationImplementation = new NavigationImplementation (this);
+        if (navigationImplementation == null) {
+            navigationImplementation = new NavigationImplementation(this);
             interfaceManager.registerInterface(InterfaceId.NAVIGATION, navigationImplementation);
         }
 
-        if(storageImplementation == null){
-            storageImplementation = new StorageImplementation (this);
+        if (storageImplementation == null) {
+            storageImplementation = new StorageImplementation(this);
             interfaceManager.registerInterface(InterfaceId.STORAGE, storageImplementation);
         }
 
-        if(gpsImplementation == null)
-        {
+        if (gpsImplementation == null) {
             gpsImplementation = new GpsImplementation();
             interfaceManager.registerInterface(InterfaceId.GPS, gpsImplementation);
         }
 
-        if(shareImplementation == null)
-        {
+        if (shareImplementation == null) {
             shareImplementation = new ShareImplementation(this);
             interfaceManager.registerInterface(InterfaceId.SHARE, shareImplementation);
         }

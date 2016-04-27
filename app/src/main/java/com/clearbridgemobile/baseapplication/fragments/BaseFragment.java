@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 public abstract class BaseFragment extends Fragment {
 
@@ -14,8 +13,7 @@ public abstract class BaseFragment extends Fragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    public boolean onBackPressed()
-    {
+    public boolean onBackPressed() {
         return true;
     }
 }

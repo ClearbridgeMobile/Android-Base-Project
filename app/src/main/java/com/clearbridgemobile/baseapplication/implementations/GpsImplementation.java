@@ -10,6 +10,7 @@ public class GpsImplementation implements GpsInterface {
 
     /**
      * Returns last location of the device.
+     *
      * @return
      */
     @Override
@@ -17,8 +18,7 @@ public class GpsImplementation implements GpsInterface {
 
         Location location = GpsManager.getInstance().getLastLocation();
 
-        if(location != null)
-        {
+        if (location != null) {
             GpsModel gpsModel = new GpsModel();
             gpsModel.setLatitude(String.valueOf(location.getLatitude()));
             gpsModel.setLongitude(String.valueOf(location.getLongitude()));

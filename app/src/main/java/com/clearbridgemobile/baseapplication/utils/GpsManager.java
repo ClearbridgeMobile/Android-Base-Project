@@ -14,36 +14,30 @@ public class GpsManager implements LocationListener {
     private LocationManager locationManager;
     private Location lastLocation;
 
-    private GpsManager()
-    {
+    private GpsManager() {
     }
 
-    public static GpsManager getInstance()
-    {
-        if(instance == null)
-        {
+    public static GpsManager getInstance() {
+        if (instance == null) {
             instance = new GpsManager();
         }
 
         return instance;
     }
 
-    public void startTracking(Context context)
-    {
+    public void startTracking(Context context) {
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         Log.e("GpsManager", "startTracking");
     }
 
-    public void stopTracking()
-    {
+    public void stopTracking() {
         locationManager.removeUpdates(this);
         Log.e("GpsManager", "stopTracking");
     }
 
-    public Location getLastLocation()
-    {
+    public Location getLastLocation() {
         return lastLocation;
     }
 
@@ -89,16 +83,19 @@ public class GpsManager implements LocationListener {
         return false;
     }
 
-    /** Checks whether two providers are the same */
+    /**
+     * Checks whether two providers are the same
+     */
     private boolean isSameProvider(String provider1, String provider2) {
         if (provider1 == null) {
             return provider2 == null;
         }
         return provider1.equals(provider2);
     }
+
     @Override
     public void onLocationChanged(Location location) {
-        if(isBetterLocation(location, lastLocation)) {
+        if (isBetterLocation(location, lastLocation)) {
             lastLocation = location;
         }
         stopTracking();

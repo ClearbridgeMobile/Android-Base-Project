@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.util.Log;
 
-import com.clearbridgemobile.baseapplication.R;
 import com.clearbridgemobile.baseapplication.fragments.BaseFragment;
 import com.clearbridgemobile.core.enums.PageId;
 import com.clearbridgemobile.core.interfaces.AppNavigationInterface;
@@ -24,7 +23,8 @@ public class NavigationImplementation implements AppNavigationInterface {
     private int fragment_container;
 
     private PageId currentPageId;
-    public NavigationImplementation (Activity fragActivity){
+
+    public NavigationImplementation(Activity fragActivity) {
         activity = fragActivity;
 
         fragments = new HashMap();
@@ -33,7 +33,7 @@ public class NavigationImplementation implements AppNavigationInterface {
 
     @Override
     public void goToPage(PageId page) {
-        if (activity == null){
+        if (activity == null) {
             return;
         }
 
@@ -49,7 +49,7 @@ public class NavigationImplementation implements AppNavigationInterface {
         FragmentTransaction transaction = activity.getFragmentManager().beginTransaction();
         transaction.setCustomAnimations(in_animation, out_animation);
 
-        if (fragments.containsKey(page)){
+        if (fragments.containsKey(page)) {
             //Get fragment
             nextFragment = fragments.get(page);
             tag = nextFragment.getTag();
@@ -61,21 +61,20 @@ public class NavigationImplementation implements AppNavigationInterface {
         switch (page) {
         }
 
-        if (nextFragment == null)
-        {
+        if (nextFragment == null) {
             Log.e("NULL_POINTER_EXCEPTION", "nextFragment is null something went wrong");
             return;
         }
         Log.d("NAVIGATION", "Going to fragment: " + tag);
 
-        if(tag == null)
+        if (tag == null)
             tag = nextFragment.getClass().getSimpleName() + "_" + fragments.size();
 
-        if (isOverlayFragment){
+        if (isOverlayFragment) {
             transaction.replace(fragment_container, nextFragment, tag);
 
-        }else{
-            if (!nextFragment.isAdded()  && !nextFragment.isRemoving()){
+        } else {
+            if (!nextFragment.isAdded() && !nextFragment.isRemoving()) {
                 transaction.replace(fragment_container, nextFragment, tag);
             }
         }
@@ -87,12 +86,12 @@ public class NavigationImplementation implements AppNavigationInterface {
         currentPageId = page;
     }
 
-    private void addPage(PageId page, BaseFragment nextFragment, String tag){
+    private void addPage(PageId page, BaseFragment nextFragment, String tag) {
         fragments.put(page, nextFragment);
         fragmentTags.put(page, tag);
     }
 
-    public boolean onBackPressed(){
+    public boolean onBackPressed() {
         if (currentPageId != null && fragments.containsKey(currentPageId))
             return (fragments.get(currentPageId)).onBackPressed();
 

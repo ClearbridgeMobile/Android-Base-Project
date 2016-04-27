@@ -8,6 +8,7 @@ import com.clearbridgemobile.core.enums.RestType;
 import com.clearbridgemobile.core.interfaces.NetworkInterface;
 import com.google.gson.Gson;
 import com.google.j2objc.annotations.ObjectiveCName;
+
 import java.util.Hashtable;
 
 public class NetworkManager {
@@ -27,19 +28,16 @@ public class NetworkManager {
         gson = CoreLib.getInstance().getGson();
     }
 
-    public void makeRequest(String url, Hashtable<String, String> headers, Hashtable<String, Object> params, NetworkCallback callback, RestType type)
-    {
+    public void makeRequest(String url, Hashtable<String, String> headers, Hashtable<String, Object> params, NetworkCallback callback, RestType type) {
         String requestID = java.util.UUID.randomUUID().toString();
-        while (requests.contains(requestID))
-        {
+        while (requests.contains(requestID)) {
             requestID = java.util.UUID.randomUUID().toString();
         }
-        if(callback != null) {
+        if (callback != null) {
             requests.put(requestID, callback);
         }
 
-        switch(type)
-        {
+        switch (type) {
             case GET:
                 networkInterface.makeGetRequest(url, headers, params, requestID);
                 break;
@@ -56,16 +54,12 @@ public class NetworkManager {
     }
 
     @ObjectiveCName(value = "onSuccess:(NSString *)payload forRequest:(NSString *)requestID")
-    public void onSuccess(String payload, String requestID)
-    {
+    public void onSuccess(String payload, String requestID) {
         NetworkCallback callback = (NetworkCallback) requests.get(requestID);
-        if(callback != null)
-        {
+        if (callback != null) {
             try {
                 callback.onGotData(payload);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 callback.onGotError(-1, e.getMessage());
             }
         }
@@ -73,11 +67,9 @@ public class NetworkManager {
     }
 
     @ObjectiveCName(value = "onError:(jint)errorCode withMessage:(NSString *)message forRequest:(NSString *)requestID")
-    public void onError(int errorCode, String message, String requestID)
-    {
+    public void onError(int errorCode, String message, String requestID) {
         NetworkCallback callback = (NetworkCallback) requests.get(requestID);
-        if(callback != null)
-        {
+        if (callback != null) {
             callback.onGotError(errorCode, message);
         }
         requests.remove(requestID);

@@ -11,11 +11,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
-
 import com.clearbridgemobile.core.interfaces.NetworkInterface;
 import com.clearbridgemobile.core.managers.NetworkManager;
 
 import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Hashtable;
@@ -28,8 +28,7 @@ public class NetworkImplementation implements NetworkInterface {
     private Context _context;
     private boolean connected;
 
-    public NetworkImplementation (Context context)
-    {
+    public NetworkImplementation(Context context) {
         _context = context;
 //        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
 //        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -37,8 +36,7 @@ public class NetworkImplementation implements NetworkInterface {
         connected = true;
     }
 
-    public void setNetworkManager (NetworkManager networkManager)
-    {
+    public void setNetworkManager(NetworkManager networkManager) {
         _networkManager = networkManager;
 //        ConnectionManager.NetworkStatusChangedListener listener = ConnectionManager.getInstance().getNetworkStatusChangedListener();
 //        if(listener != null) {
@@ -46,61 +44,53 @@ public class NetworkImplementation implements NetworkInterface {
 //        }
     }
 
-    protected RequestQueue getRequestQueue ()
-    {
+    protected RequestQueue getRequestQueue() {
         if (_requestQueue == null)
             _requestQueue = Volley.newRequestQueue(_context);
 
         return _requestQueue;
     }
 
-    protected <T> void addToRequestQueue (Request<T> request, String tag)
-    {
+    protected <T> void addToRequestQueue(Request<T> request, String tag) {
         request.setTag(tag);
 
         getRequestQueue().add(request);
     }
 
-    protected void cancelPendingRequests (Object tag)
-    {
+    protected void cancelPendingRequests(Object tag) {
         if (_requestQueue != null)
             _requestQueue.cancelAll(tag);
 
     }
 
-    protected void sendRequest (String url, final Map<String, String> headers, Map<String, Object> params, final String requestId, int method)
-    {
+    protected void sendRequest(String url, final Map<String, String> headers, Map<String, Object> params, final String requestId, int method) {
         if (_networkManager == null)
             return;
 
         JSONObject jsonParams = null;
         String paramsString = "";
         if (params != null) {
-            if(method == Request.Method.GET)
-            {
+            if (method == Request.Method.GET) {
                 StringBuilder sb = new StringBuilder();
                 sb.append(url);
 
-                if(params.size() > 0)
-                {
+                if (params.size() > 0) {
                     sb.append("?");
                 }
 
-                for(Hashtable.Entry<String, Object> e : params.entrySet()){
-                    if(sb.length() > url.length() + 1){
+                for (Hashtable.Entry<String, Object> e : params.entrySet()) {
+                    if (sb.length() > url.length() + 1) {
                         sb.append('&');
                     }
                     try {
                         String key = e.getKey();
                         Object value = e.getValue();
-                        if(value.getClass() == String.class) {
-                            sb.append(URLEncoder.encode(key, "UTF-8")).append('=').append(URLEncoder.encode((String)value, "UTF-8"));
-                        }
-                        else if(value instanceof String[]) {
+                        if (value.getClass() == String.class) {
+                            sb.append(URLEncoder.encode(key, "UTF-8")).append('=').append(URLEncoder.encode((String) value, "UTF-8"));
+                        } else if (value instanceof String[]) {
                             String[] values = (String[]) value;
 
-                            for(String v : values)
-                            {
+                            for (String v : values) {
                                 sb.append('&');
                                 sb.append(URLEncoder.encode(key, "UTF-8")).append('=').append(URLEncoder.encode(v, "UTF-8"));
                             }
@@ -110,8 +100,7 @@ public class NetworkImplementation implements NetworkInterface {
                     }
                 }
                 url = sb.toString();
-            }
-            else {
+            } else {
                 jsonParams = new JSONObject(params);
                 paramsString = jsonParams.toString();
             }
@@ -136,17 +125,14 @@ public class NetworkImplementation implements NetworkInterface {
                 try {
                     String dataString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
                     return Response.success(dataString, HttpHeaderParser.parseCacheHeaders(response));
-                }
-                catch (UnsupportedEncodingException e)
-                {
+                } catch (UnsupportedEncodingException e) {
                     return Response.error(new ParseError(e));
                 }
             }
 
             @Override
             public Map<String, String> getHeaders() {
-                if(headers == null)
-                {
+                if (headers == null) {
                     return new Hashtable<>();
                 }
                 return headers;
@@ -156,20 +142,18 @@ public class NetworkImplementation implements NetworkInterface {
         addToRequestQueue(request, requestId);
     }
 
-    protected void onSuccessCallback (String data, String requestId)
-    {
+    protected void onSuccessCallback(String data, String requestId) {
         if (_networkManager == null)
             return;
         _networkManager.onSuccess(data, requestId);
     }
 
-    protected void onErrorCallback (VolleyError error, String requestId)
-    {
+    protected void onErrorCallback(VolleyError error, String requestId) {
         if (_networkManager == null)
             return;
 
         int statusCode = -1;
-        if(error.networkResponse != null)
+        if (error.networkResponse != null)
             statusCode = error.networkResponse.statusCode;
         String error_string = error.getMessage();
         error_string = (error_string == null) ? "" : error_string;
@@ -202,8 +186,7 @@ public class NetworkImplementation implements NetworkInterface {
         return connected;
     }
 
-    public void setConnected(boolean connected)
-    {
+    public void setConnected(boolean connected) {
         this.connected = connected;
     }
 }

@@ -41,6 +41,7 @@ public class VolleySingleton {
             @Override
             public void onResponse(ImageLoader.ImageContainer response, boolean b) {
             }
+
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 Log.w("VolleyError", volleyError.toString());
@@ -67,11 +68,10 @@ public class VolleySingleton {
      * Gets the instance.
      *
      * @param context The current Context.
-     *
      * @return The instance.
      */
     public static VolleySingleton getInstance(Context context) {
-        if(mInstance == null) {
+        if (mInstance == null) {
             mInstance = new VolleySingleton(context);
         }
         return mInstance;
@@ -82,8 +82,7 @@ public class VolleySingleton {
      *
      * @param url The url path for the image.
      */
-    public void loadAndCacheImage(String url)
-    {
+    public void loadAndCacheImage(String url) {
         mImageLoader.get(url, mImageListener);
     }
 
